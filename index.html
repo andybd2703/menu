@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú Restaurante Paula</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #FF0000, #FFA500, #FFD700); /* Degradado rojo, naranja, amarillo */
+    color: white;
+    min-height: 100vh;
+}
+
+.menu-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(75, 44, 32, 0.9); /* Fondo semi-transparente marrón oscuro */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #E6AC27;
+}
+
+.header h1 {
+    font-size: 36px;
+    margin: 0;
+    color: #FFD700; /* Amarillo brillante */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.header h2 {
+    font-size: 24px;
+    margin: 5px 0 0;
+    color: #FFD700; /* Amarillo brillante */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.menu-items {
+    margin-top: 20px;
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+.category h3 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #FFD700; /* Amarillo brillante */
+    border-bottom: 1px solid #FFD700; /* Amarillo brillante */
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.category li {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    color: #FFF5E1; /* Blanco con un tono cálido */
+}
+
+.category li span {
+    font-weight: bold;
+}
+
+#principios li {
+    font-size: 18px;
+    color: #FFE4B5; /* Beige claro */
+}
+
+</style>
+
+<link rel="icon" href="306132377_427404206203525_5987524158207114688_n.jpg" type="image/png"> <!-- Ruta de tu logo -->
+
+</head>
+<body>
+    <div class="menu-container">
+        <header class="header">
+        <h1>RESTAURANTE PAULA</h1>
+        <h2>ALMUERZOS $13,000 | BANDEJA $12,000</h2>
+        </header>
+        <section class="menu-items">
+        <div class="category">
+            <h3>Platos</h3>
+            <ul>
+            <li>Carne asada <span>$13,000</span></li>
+            <li>Carne en bistec <span>$13,000</span></li>
+            <li>Carne a la BBQ <span>$13,000</span></li>
+            <li>Carne encebollada <span>$13,000</span></li>
+            <li>Pollo a la plancha/BBQ <span>$13,000</span></li>
+            <li>Pollo sudado <span>$13,000</span></li>
+            <li>Pollo frito <span>$13,000</span></li>
+            <li>Cerdo a la plancha/BBQ <span>$13,000</span></li>
+            <li>Hígado a la plancha <span>$13,000</span></li>
+            <li>Hígado en bistec <span>$13,000</span></li>
+            <li>Hígado encebollado <span>$13,000</span></li>
+            </ul>
+        </div>
+        <div class="category">
+        <h3>Principios</h3>
+        <ul id="principios"></ul>
+        </div>
+        <div class="category">
+            <h3>Bebidas</h3>
+            <ul>
+            <li>Jugos Hit <span>$4,000</span></li>
+            <li>Gaseosa personal <span>$4,000</span></li>
+            <li>Agua <span>$3,000</span></li>
+            <li>Agua con gas <span>$4,500</span></li>
+            </ul>
+        </div>
+
+        </section>
+    </div>
+</body>
+<script>
+    // Obtener el día actual (0=domingo, 6=sábado)
+const diaSemana = new Date().getDay();
+
+// Lista de principios según el día de la semana
+const principiosPorDia = {
+  0: [], // Domingo: sin principios
+  1: ["Frijol", "Garbanzos"], // Lunes
+  2: ["Frijol", "Macarrones"], // Martes
+  3: ["Frijoles", "Habichuelas", "Lentejas"], // Miércoles
+  4: ["Frijoles", "Arvejas"], // Jueves
+  5: ["Frijoles", "Blanquillo"], // Viernes
+  6: ["Frijoles", "Espaguetis"] // Sábado
+};
+
+// Seleccionar la lista de principios en el HTML
+const listaPrincipios = document.getElementById("principios");
+
+// Obtener los principios para el día actual
+const principiosHoy = principiosPorDia[diaSemana];
+
+// Mostrar los principios en la lista si no es domingo
+if (principiosHoy.length > 0) {
+    principiosHoy.forEach((principio) => {
+        const li = document.createElement("li");
+        li.textContent = principio;
+        listaPrincipios.appendChild(li);
+    });
+    } else {
+    // Mostrar mensaje cuando no hay principios (domingo)
+    const li = document.createElement("li");
+    li.textContent = "Hoy no hay principio.";
+    listaPrincipios.appendChild(li);
+}
+
+
+
+</script>
+</html>
