@@ -94,8 +94,13 @@
         <h1>RESTAURANTE PAULA</h1>
         <h2>ALMUERZOS $13,000 | BANDEJA $12,000</h2>
         </header>
-        <section class="menu-items">
+
         <div class="category">
+
+            <div class="category">
+                <h3>Sopas</h3>
+                <ul id="sopas"></ul>
+            </div>
             <h3>Platos</h3>
             <ul>
             <li>Carne asada <span>$13,000</span></li>
@@ -123,7 +128,7 @@
             <li>Agua <span>$3,000</span></li>
             <li>Agua con gas <span>$4,500</span></li>
             </ul>
-
+        </div>
         <div class="category">
             <h3>Acompañantes</h3>
             <ul>
@@ -133,46 +138,57 @@
             <li>Porcion de Proteina <span>$6,000</span></li>
             </ul>
         </div>
-    
         </section>
     </div>
 </body>
 <script>
-    // Obtener el día actual (0=domingo, 6=sábado)
-const diaSemana = new Date().getDay();
+   // Obtener el día actual (0=domingo, 6=sábado)
+   const diaSemana = new Date().getDay();
 
 // Lista de principios según el día de la semana
 const principiosPorDia = {
-  0: [], // Domingo: sin principios
-  1: ["Frijol", "Garbanzos"], // Lunes
-  2: ["Frijol", "Macarrones"], // Martes
-  3: ["Frijoles", "Habichuelas", "Lentejas"], // Miércoles
-  4: ["Frijoles", "Arvejas"], // Jueves
-  5: ["Frijoles", "Blanquillo"], // Viernes
-  6: ["Frijoles", "Espaguetis"] // Sábado
+    0: [], // Domingo
+    1: ["Frijol", "Garbanzos"], // Lunes
+    2: ["Frijol", "Macarrones"], // Martes
+    3: ["Frijoles", "Habichuelas", "Lentejas"], // Miércoles
+    4: ["Frijoles", "Arvejas"], // Jueves
+    5: ["Frijoles", "Blanquillo"], // Viernes
+    6: ["Frijoles", "Espaguetis"] // Sábado
 };
 
-// Seleccionar la lista de principios en el HTML
+// Lista de sopas según el día de la semana
+const sopasPorDia = [
+    ["Sancocho de pescado", "Sancocho de gallina"], // Domingo
+    ["Sancocho de pescado", "Sancocho de pollo"], // Lunes
+    ["Sancocho de pescado", "Sopa de guineo"], // Martes
+    ["Sancocho de pescado", "Sopa de pajarillo"], // Miércoles
+    ["Ajiaco", "Sopa de pollo"], // Jueves
+    ["Cazuela de frijoles", "Sancocho de pescado", "Sopa de pollo"], // Viernes
+    ["Sancocho de pescado", "Sopa de lentejas"] // Sábado
+];
+
+// Mostrar los principios
 const listaPrincipios = document.getElementById("principios");
-
-// Obtener los principios para el día actual
 const principiosHoy = principiosPorDia[diaSemana];
-
-// Mostrar los principios en la lista si no es domingo
 if (principiosHoy.length > 0) {
     principiosHoy.forEach((principio) => {
         const li = document.createElement("li");
         li.textContent = principio;
         listaPrincipios.appendChild(li);
     });
-    } else {
-    // Mostrar mensaje cuando no hay principios (domingo)
+} else {
     const li = document.createElement("li");
     li.textContent = "Hoy no hay principio.";
     listaPrincipios.appendChild(li);
 }
 
-
-
+// Mostrar las sopas
+const listaSopas = document.getElementById("sopas");
+const sopasHoy = sopasPorDia[diaSemana];
+sopasHoy.forEach((sopa) => {
+    const li = document.createElement("li");
+    li.textContent = sopa;
+    listaSopas.appendChild(li);
+});
 </script>
 </html>
